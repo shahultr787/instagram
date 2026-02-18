@@ -2,8 +2,12 @@ const express = require("express");
 const multer = require("multer");
 const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
+const cors = require("cors");   // <-- ADD
 
 const app = express();
+
+app.use(cors());                // <-- ADD (allow all origins)
+
 const upload = multer({ dest: "uploads/" });
 
 app.get("/", (req,res)=>res.send("Video converter running"));
